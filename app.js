@@ -19,6 +19,7 @@ var fs = require('fs')
 
 var config = {
         output: '/tmp/'
+      , ext: 'json'
     }
   , messages = {
         nosuite: 'No Benchmark suite provided, Cheetah will not process results!'
@@ -34,9 +35,26 @@ var config = {
 module.exports = function Cheetah (suite) {
   if (!suite) return logger.critical(messages.nosuite);
 
-  // After completion store operations/second to JSON.
+  // Add cycles to the data.
   var data = {};
-  suite.on('complete', function complete (test) {
+
+  /**
+   * Add cycles to the data.
+   *
+   * @param {Object} test each completed test
+   * @api private
+   */
+  suite.on('cycle', function cycle (test) {
     console.log(test);
+  });
+
+  /**
+   * After completion store operations/second to JSON
+   * in addition start HTML and SVG generation.
+   *
+   * @api private
+   */
+
+  suite.on('complete', function complete () {
   });
 };
