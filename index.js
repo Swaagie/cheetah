@@ -31,9 +31,7 @@ var config = {
  * @api public
  */
 
-module.exports = function Cheetah (suite) {
-  if (!suite) return logger.critical(messages.nosuite);
-
+function Cheetah () {
   // Add cycles to the data.
   var data = {};
 
@@ -43,9 +41,9 @@ module.exports = function Cheetah (suite) {
    * @param {Object} test each completed test
    * @api private
    */
-  suite.on('cycle', function cycle (test) {
+  /*suite.on('cycle', function cycle (test) {
     console.log(test);
-  });
+  });*/
 
   /**
    * After completion store operations/second to JSON
@@ -54,6 +52,8 @@ module.exports = function Cheetah (suite) {
    * @api private
    */
 
-  suite.on('complete', function complete () {
-  });
+  /*suite.on('complete', function complete () {
+  });*/
 };
+
+module.exports = new Cheetah();
