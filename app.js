@@ -5,7 +5,6 @@
  */
 
 var fs = require('fs')
-  , useragent = require('useragent')
   , Logger = require('devnull')
   , logger = new Logger({
       timestamp: false
